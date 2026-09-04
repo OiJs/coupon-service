@@ -34,7 +34,10 @@ import lombok.NoArgsConstructor;
         @Index(name = "idx_member_coupon_user_status_end", columnList = "user_id, member_coupon_status, member_coupon_end_date"),
 
         //주문 취소/복구용 검색 인덱스
-        @Index(name = "idx_member_coupon_order_number", columnList = "order_number")
+        @Index(name = "idx_member_coupon_order_number", columnList = "order_number"),
+
+        //배치 만료 처리용 인덱스
+        @Index(name = "idx_batch_expire", columnList = "member_coupon_status, member_coupon_end_date")
 },
         //쿠폰 중복 발급 방지를 위해 user_id와 coupon_id를 유니크 키로 설정
         uniqueConstraints = {
